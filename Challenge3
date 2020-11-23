@@ -1,0 +1,81 @@
+class Person:
+    # Initiate attributes
+    def __init__(self, name:str, address:str):
+        self.__name = name
+        self.__address = address
+    
+    # Method to return private attribute 'name'.
+    def getName(self)->str:
+        return (self.__name)
+
+    # Method to return private attribute 'address'.
+    def getAddress(self)->str:
+        return (self.__address)
+    
+    # Change the address
+    def setAddress(self,address:str):
+        self.__address = address
+        return ("Address now: {}".format(address))
+    
+    def __str__(self):
+        return (self.getName()+"({})".format(self.getAddress()))
+
+# Define a class named "Student" and inherit all attributes and methods from "Person" class with super().__init__ 
+class Student(Person):
+    # Assign "Student" object using def__init__ function
+    def __init__(self, name:str, address:str, numCourses:int=0, courses:list=[], grades:list=[] ):
+        super().__init__(name, address)
+        self.__numCourses = numCourses
+        self.__courses = courses
+        self.__grades = grades
+
+    # Add course(s) / grade(s) / both for student
+    def addCourseGrade(self, course:str ,grade:int):
+        self.__numCourses += 1
+        self.__courses.append(course)
+        self.__grades.append(grade)
+        return ("Course: {} and Grade: {} is added".format(course,grade))
+
+    # Print all of the grades
+    def printGrades(self):
+        return (self.__grades)
+    
+    # Calculate the student's average grade
+    def getAverageGrade(self):
+        result = 0
+        for int in self.__grades:
+            result += int
+        return (result/len(self.__grades))
+    
+    def __str__(self):
+        '''All are in strings.'''
+        return (self.getName()+"({})".format(self.getAddress()))
+
+# Define a class named "Teacher" and inherit all attributes and methods from "Person" class using super().__init__ 
+class Teacher(Person):
+    # Assign "Teacher" object using def__init__ function
+    def __init__(self, name, address, numCourses:int=0, courses:list=[]):
+        super().__init__(name, address)
+        self.__numCourses = numCourses
+        self.__courses = courses
+
+    # Add course(s) for teacher
+    def addCourse(self, course:str)->bool:
+        if (course in self.__courses):
+            return False
+        else:
+            self.__numCourses += 1
+            self.__courses.append(course)
+            return ("{} course is added".format(course))
+    
+    # Remove course(s) for teacher and return boolean values to indicate completed action.
+    def removeCourses(self, course:str)->bool:
+        if (course not in self.__courses):
+            return False
+        else:
+            self.__numCourses -= 1
+            self.__courses.remove(course)
+            return ("{} course is removed".format(course))
+    
+    def __str__(self):
+        return ("Teacher: "+ self.getName() + "({})".format(self.getAddress()))

@@ -5,15 +5,15 @@ class Person:
         self.__address = address
     
     # Method to return private attribute 'name'.
-    def getName(self)->str:
+    def getName(self):
         return (self.__name)
 
     # Method to return private attribute 'address'.
-    def getAddress(self)->str:
+    def getAddress(self):
         return (self.__address)
     
     # Change the address
-    def setAddress(self,address:str):
+    def setAddress(self,address):
         self.__address = address
         return ("Address now: {}".format(address))
     
@@ -60,7 +60,7 @@ class Teacher(Person):
         self.__courses = courses
 
     # Add course(s) for teacher
-    def addCourse(self, course:str)->bool:
+    def addCourse(self, course:str):
         if (course in self.__courses):
             return False
         else:
@@ -69,7 +69,7 @@ class Teacher(Person):
             return ("{} course is added".format(course))
     
     # Remove course(s) for teacher and return boolean values to indicate completed action.
-    def removeCourses(self, course:str)->bool:
+    def removeCourses(self, course):
         if (course not in self.__courses):
             return False
         else:

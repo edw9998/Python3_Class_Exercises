@@ -68,7 +68,7 @@ class Student(Person):
         temp = []
         for el in self.grades:
             for pair in el:
-                if type(pair) is int:
+                if type(pair) is int or type(pair) is float:
                     temp.append(pair)
         mean_res = st.mean(temp)
         return f"Your Average Grade Is : {mean_res}"

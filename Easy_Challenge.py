@@ -18,7 +18,7 @@ class A(M):
     
 class B(M):
     def __init__(self):
-        super().__init__(self)
+        M.__init__(self)
         self.do_nothing()
 
 # Classes X, Y, Z Inherit Both Child Classes(A, B).
